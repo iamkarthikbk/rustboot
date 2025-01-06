@@ -1,0 +1,24 @@
+[package]
+name = "rustboot"
+version = "0.1.0"
+edition = "2021"
+authors = ["Karthik B K <karthik.bk@incoresemi.com>"]
+description = "A secure boot implementation for RISC-V"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+riscv = "0.10.1"           # RISC-V CPU support
+sha2 = "0.10.8"            # For cryptographic hashing
+ed25519-dalek = "2.1.0"    # For digital signatures
+hex = "0.4.3"              # For hex encoding/decoding
+log = "0.4.20"             # Logging support
+env_logger = "0.10.1"      # Logging implementation
+
+[profile.release]
+opt-level = 3              # Maximum optimization
+debug = false              # No debug symbols
+lto = true                 # Link-time optimization
+codegen-units = 1         # Optimize for size
+panic = "abort"           # Minimal panic implementation
+strip = true              # Strip symbols from binary
